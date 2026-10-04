@@ -38,8 +38,14 @@ export default function App() {
   // Mashq sessiyasi
   const [session, setSession] = useState(null) // { ids: [], idx, total }
 
-  useEffect(() => saveWords(words), [words])
-  useEffect(() => saveMeta(meta), [meta])
+  // Diqqat: figurali qavs shart — saveWords/saveMeta boolean qaytaradi,
+  // qavssiz bo'lsa React uni cleanup funksiyasi deb chaqirib crash beradi.
+  useEffect(() => {
+    saveWords(words)
+  }, [words])
+  useEffect(() => {
+    saveMeta(meta)
+  }, [meta])
 
   const showToast = useCallback((msg) => {
     setToast(msg)
