@@ -36,6 +36,36 @@ const RATINGS = [
   { baho: BAHO.JUDA_OSON, label: 'Juda oson', sub: 'uzoqroq', cls: 'easy' },
 ]
 
+// Misol gaplar: rus gap + o'zbekcha tarjimasi. Rus gapni bosib eshitish mumkin.
+function Examples({ word }) {
+  const list =
+    word.misollar && word.misollar.length
+      ? word.misollar
+      : word.misol
+        ? [{ ru: word.misol, uz: '' }]
+        : []
+  if (!list.length) return null
+  return (
+    <div className="examples">
+      <div className="examples-title">Misollar</div>
+      {list.map((m, i) => (
+        <div className="example" key={i}>
+          <button
+            type="button"
+            className="ex-ru"
+            onClick={() => speechMavjud() && speak(m.ru, 'ru-RU')}
+            title="Eshitish"
+          >
+            {speechMavjud() && <span className="ex-spk">🔊</span>}
+            {m.ru}
+          </button>
+          {m.uz && <span className="ex-uz">{m.uz}</span>}
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export default function Practice({ session, words, onGrade, onExit }) {
   const { ids, idx, total } = session
   const finished = idx >= ids.length
@@ -138,7 +168,6 @@ export default function Practice({ session, words, onGrade, onExit }) {
             <>
               <div className="divider" />
               <div className="answer">{word.uzbek}</div>
-              {word.misol && <div className="misol">{word.misol}</div>}
             </>
           ) : (
             <div className="hint">Javobni eslang, keyin oching</div>
@@ -240,6 +269,8 @@ export default function Practice({ session, words, onGrade, onExit }) {
           Javobni ko'rish
         </button>
       )}
+
+      {answered && <Examples word={word} />}
 
       {answered && (
         <div className="ratings">

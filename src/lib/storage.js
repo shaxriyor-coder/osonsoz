@@ -34,6 +34,7 @@ export function seedWord(w, id) {
     rus: w.rus,
     uzbek: w.uzbek,
     misol: w.misol || '',
+    misollar: Array.isArray(w.misollar) ? w.misollar : [],
     holat: HOLAT.YANGI,
     interval: 0,
     osonKoeffitsienti: EASE_DEFAULT,
@@ -59,7 +60,20 @@ export function loadWords() {
   if (!Array.isArray(words) || words.length === 0) {
     words = initialWords.map((w, i) => seedWord(w, i + 1))
     safeSet(WORDS_KEY, words)
+    return words
   }
+  // Migratsiya: eski saqlangan so'zlarda misollar bo'lmasa, boshlang'ich
+  // lug'atdan (rus bo'yicha) to'ldiramiz. SRS progressiga tegilmaydi.
+  const misolByRus = new Map(initialWords.map((w) => [w.rus, w.misollar]))
+  let changed = false
+  words = words.map((w) => {
+    if (!Array.isArray(w.misollar) || w.misollar.length === 0) {
+      changed = true
+      return { ...w, misollar: misolByRus.get(w.rus) || [] }
+    }
+    return w
+  })
+  if (changed) safeSet(WORDS_KEY, words)
   return words
 }
 
@@ -106,6 +120,7 @@ export function parseImport(text) {
     rus: String(w.rus ?? '').trim(),
     uzbek: String(w.uzbek ?? '').trim(),
     misol: w.misol || '',
+    misollar: Array.isArray(w.misollar) ? w.misollar : [],
     holat: w.holat || HOLAT.YANGI,
     interval: Number(w.interval) || 0,
     osonKoeffitsienti: Number(w.osonKoeffitsienti) || EASE_DEFAULT,
