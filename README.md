@@ -7,7 +7,13 @@ brauzeringizning `localStorage`'ida saqlanadi — hech qanday serverga yuborilma
 ## Imkoniyatlar
 
 - **Bugun** — bugungi takrorlash va yangi so'zlar soni, "Boshlash" tugmasi, streak.
-- **Mashq** — uch rejim aralash keladi: kartochka, test (4 variant), yozib javob berish.
+- **Mashq** — ikki xil:
+  - **Aralash takrorlash** — oraliq takrorlash (SRS) bo'yicha bugungi so'zlar.
+  - **Mavzu bo'yicha** — 139 fe'l 11 ta mavzuga bo'lingan (Harakat, Muloqot, Fikr,
+    His-tuyg'u va h.k.), istalgan mavzuni alohida yodlash mumkin. Mavzu yechilgach
+    **o'zlashtirish foizi** saqlanadi: yaxshi yechsa oshadi, yomon yechsa kamayadi.
+
+  Har ikkisida uch rejim aralash keladi: kartochka, test (4 variant), yozib javob berish.
   Har javobdan keyin **Bilmadim / Qiynaldim / Bildim / Juda oson** bahosi keyingi
   takrorlash vaqtini belgilaydi.
 - **Lug'at** — barcha so'zlar, holati (yangi / o'rganilmoqda / yodlangan), qidirish,

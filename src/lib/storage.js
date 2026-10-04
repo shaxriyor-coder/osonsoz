@@ -2,6 +2,7 @@
 // seed qilish, JSON eksport/import.
 
 import { initialWords } from '../data/initialWords.js'
+import { mavzuById } from '../data/topics.js'
 import { todayISO } from './date.js'
 import { EASE_DEFAULT, HOLAT } from './srs.js'
 
@@ -35,6 +36,7 @@ export function seedWord(w, id) {
     uzbek: w.uzbek,
     misol: w.misol || '',
     misollar: Array.isArray(w.misollar) ? w.misollar : [],
+    mavzu: w.mavzu || mavzuById.get(id) || 'boshqa',
     holat: HOLAT.YANGI,
     interval: 0,
     osonKoeffitsienti: EASE_DEFAULT,
@@ -51,6 +53,7 @@ export function defaultMeta() {
     newIntroducedByDate: {}, // { "2026-10-04": 5 }
     studyDates: [], // mashq qilingan kunlar (unikal, o'sish tartibida)
     newPerDay: 15,
+    mavzuFoiz: {}, // mavzu id -> o'zlashtirish foizi { harakat: 72 }
   }
 }
 
@@ -67,11 +70,16 @@ export function loadWords() {
   const misolByRus = new Map(initialWords.map((w) => [w.rus, w.misollar]))
   let changed = false
   words = words.map((w) => {
+    let nw = w
     if (!Array.isArray(w.misollar) || w.misollar.length === 0) {
+      nw = { ...nw, misollar: misolByRus.get(w.rus) || [] }
       changed = true
-      return { ...w, misollar: misolByRus.get(w.rus) || [] }
     }
-    return w
+    if (!w.mavzu) {
+      nw = { ...nw, mavzu: mavzuById.get(w.id) || 'boshqa' }
+      changed = true
+    }
+    return nw
   })
   if (changed) safeSet(WORDS_KEY, words)
   return words
@@ -121,6 +129,7 @@ export function parseImport(text) {
     uzbek: String(w.uzbek ?? '').trim(),
     misol: w.misol || '',
     misollar: Array.isArray(w.misollar) ? w.misollar : [],
+    mavzu: w.mavzu || mavzuById.get(w.id ?? i + 1) || 'boshqa',
     holat: w.holat || HOLAT.YANGI,
     interval: Number(w.interval) || 0,
     osonKoeffitsienti: Number(w.osonKoeffitsienti) || EASE_DEFAULT,

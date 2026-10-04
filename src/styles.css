@@ -549,6 +549,113 @@ h1.page-title {
   margin: 10px 0 4px;
 }
 
+/* ---------- Mashq home (mavzular) ---------- */
+.result-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ok-bg);
+  color: var(--ok);
+  border-radius: 13px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+.srs-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.srs-info {
+  flex: 1;
+  min-width: 0;
+}
+.srs-title {
+  font-weight: 700;
+  font-size: 16px;
+}
+.srs-sub {
+  color: var(--text-dim);
+  font-size: 13px;
+  margin-top: 2px;
+}
+.srs-btn {
+  flex: none;
+}
+.topic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.topic-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  text-align: left;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  transition: transform 0.08s ease;
+}
+.topic-card:active {
+  transform: scale(0.99);
+}
+.topic-emoji {
+  font-size: 26px;
+  flex: none;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: var(--surface-2);
+  border-radius: 12px;
+}
+.topic-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.topic-nom {
+  font-weight: 700;
+  font-size: 16px;
+}
+.topic-bar {
+  height: 7px;
+  background: var(--surface-2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.topic-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+.topic-meta {
+  font-size: 12.5px;
+  color: var(--text-dim);
+}
+.topic-go {
+  flex: none;
+  font-size: 24px;
+  color: var(--text-dim);
+  font-weight: 700;
+}
+.big-foiz {
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 6px 0;
+}
+
 /* ---------- Dictionary ---------- */
 .search-row {
   display: flex;

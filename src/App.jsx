@@ -11,9 +11,11 @@ import {
 } from './lib/storage.js'
 import { baholash, takrorlashKerakmi, BAHO, HOLAT, EASE_DEFAULT } from './lib/srs.js'
 import { todayISO } from './lib/date.js'
+import { TOPICS, mavzuById } from './data/topics.js'
 import BottomNav from './components/BottomNav.jsx'
 import Today from './components/Today.jsx'
 import Practice from './components/Practice.jsx'
+import MashqHome from './components/MashqHome.jsx'
 import Dictionary from './components/Dictionary.jsx'
 import Stats from './components/Stats.jsx'
 import { AddWordsModal, BackupModal } from './components/Modals.jsx'
@@ -27,6 +29,22 @@ function shuffle(arr) {
   return a
 }
 
+// Baho -> ball (mavzu foizi uchun): bildim/juda oson = 1, qiynaldim = 0.5, bilmadim = 0
+function bahoToScore(baho) {
+  if (baho === BAHO.BILDIM || baho === BAHO.JUDA_OSON) return 1
+  if (baho === BAHO.QIYNALDIM) return 0.5
+  return 0
+}
+
+// Sessiya natijasidan foiz (0..100) — har bir so'z uchun oxirgi baho hisobga olinadi
+function sessiyaFoizi(session) {
+  if (!session) return 0
+  const uniq = [...new Set(session.ids)]
+  if (uniq.length === 0) return 0
+  const got = uniq.reduce((a, id) => a + (session.natija?.[id] ?? 0), 0)
+  return Math.round((got / uniq.length) * 100)
+}
+
 export default function App() {
   const [words, setWords] = useState(() => loadWords())
   const [meta, setMeta] = useState(() => loadMeta())
@@ -35,8 +53,9 @@ export default function App() {
   const [editWord, setEditWord] = useState(null)
   const [toast, setToast] = useState(null)
 
-  // Mashq sessiyasi
-  const [session, setSession] = useState(null) // { ids: [], idx, total }
+  // Mashq sessiyasi: { ids, idx, total, type:'srs'|'mavzu', mavzuId?, natija:{} }
+  const [session, setSession] = useState(null)
+  const [lastResult, setLastResult] = useState(null) // { mavzuId, pct, eski }
 
   // Diqqat: figurali qavs shart — saveWords/saveMeta boolean qaytaradi,
   // qavssiz bo'lsa React uni cleanup funksiyasi deb chaqirib crash beradi.
@@ -66,6 +85,17 @@ export default function App() {
   )
   const remainingNew = Math.max(0, (meta.newPerDay || 15) - introducedToday)
 
+  // Mavzular ro'yxati (so'z soni va o'zlashtirish foizi bilan)
+  const mavzular = useMemo(() => {
+    const countByMavzu = {}
+    for (const w of words) countByMavzu[w.mavzu] = (countByMavzu[w.mavzu] || 0) + 1
+    return TOPICS.map((t) => ({
+      ...t,
+      soni: countByMavzu[t.id] || 0,
+      foiz: meta.mavzuFoiz ? meta.mavzuFoiz[t.id] ?? null : null,
+    })).filter((t) => t.soni > 0)
+  }, [words, meta.mavzuFoiz])
+
   const startSession = useCallback(() => {
     const due = words.filter((w) => takrorlashKerakmi(w, today))
     const fresh = words.filter((w) => w.holat === HOLAT.YANGI).slice(0, remainingNew)
@@ -74,14 +104,45 @@ export default function App() {
       showToast('Bugun takrorlash uchun so\'z yo\'q 🎉')
       return
     }
-    setSession({ ids, idx: 0, total: ids.length })
+    setLastResult(null)
+    setSession({ ids, idx: 0, total: ids.length, type: 'srs', natija: {} })
     setView('mashq')
   }, [words, today, remainingNew, showToast])
 
+  // Mavzu bo'yicha mashq: shu mavzudagi barcha so'zlar (cheklovsiz, bemalol)
+  const startMavzu = useCallback(
+    (mavzuId) => {
+      const ids = shuffle(words.filter((w) => w.mavzu === mavzuId).map((w) => w.id))
+      if (ids.length === 0) {
+        showToast("Bu mavzuda so'z yo'q")
+        return
+      }
+      setLastResult(null)
+      setSession({ ids, idx: 0, total: ids.length, type: 'mavzu', mavzuId, natija: {} })
+      setView('mashq')
+    },
+    [words, showToast],
+  )
+
+  // Sessiya tugaganda (mavzu bo'lsa) foizni yangilaymiz
+  const finishSession = useCallback(() => {
+    const s = session
+    if (!s || s.type !== 'mavzu') return
+    const pct = sessiyaFoizi(s)
+    setMeta((m) => {
+      const eski = m.mavzuFoiz ? m.mavzuFoiz[s.mavzuId] : undefined
+      // Yaxshi yechsa oshadi, yomon yechsa kamayadi (silliq o'zgarish)
+      const yangi = eski == null ? pct : Math.round(eski * 0.5 + pct * 0.5)
+      return { ...m, mavzuFoiz: { ...(m.mavzuFoiz || {}), [s.mavzuId]: yangi } }
+    })
+    setLastResult({ mavzuId: s.mavzuId, pct })
+  }, [session])
+
   const endSession = useCallback(() => {
+    const type = session?.type
     setSession(null)
-    setView('bugun')
-  }, [])
+    setView(type === 'mavzu' ? 'mashq' : 'bugun')
+  }, [session])
 
   // Bitta so'zni baholash
   const gradeWord = useCallback(
@@ -113,7 +174,11 @@ export default function App() {
       setSession((s) => {
         if (!s) return s
         const ids = baho === BAHO.BILMADIM ? [...s.ids, wordId] : s.ids
-        return { ...s, ids, idx: s.idx + 1 }
+        const natija =
+          s.type === 'mavzu'
+            ? { ...s.natija, [wordId]: bahoToScore(baho) }
+            : s.natija
+        return { ...s, ids, idx: s.idx + 1, natija }
       })
     },
     [words, today],
@@ -131,6 +196,8 @@ export default function App() {
             rus: rus.trim(),
             uzbek: uzbek.trim(),
             misol: (misol || '').trim(),
+            misollar: [],
+            mavzu: mavzuById.get(id) || 'boshqa',
             holat: HOLAT.YANGI,
             interval: 0,
             osonKoeffitsienti: EASE_DEFAULT,
@@ -244,14 +311,17 @@ export default function App() {
               words={words}
               onGrade={gradeWord}
               onExit={endSession}
+              onFinish={finishSession}
             />
           ) : (
-            <Today
+            <MashqHome
               dueCount={dueWords.length}
               newCount={Math.min(newAvailable.length, remainingNew)}
               totalNew={newAvailable.length}
-              streak={computeStreak(meta.studyDates, today)}
-              onStart={startSession}
+              mavzular={mavzular}
+              lastResult={lastResult}
+              onStartSrs={startSession}
+              onStartMavzu={startMavzu}
             />
           ))}
 

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { BAHO } from '../lib/srs.js'
 import { speak, speechMavjud } from '../lib/speech.js'
 
@@ -66,7 +66,7 @@ function Examples({ word }) {
   )
 }
 
-export default function Practice({ session, words, onGrade, onExit }) {
+export default function Practice({ session, words, onGrade, onExit, onFinish }) {
   const { ids, idx, total } = session
   const finished = idx >= ids.length
   const wordId = finished ? null : ids[idx]
@@ -107,14 +107,52 @@ export default function Practice({ session, words, onGrade, onExit }) {
     setChecked(false)
   }, [idx])
 
+  // sessiya tugaganda bir marta onFinish (mavzu foizini yangilash uchun)
+  const finishedRef = useRef(false)
+  useEffect(() => {
+    if (finished && !finishedRef.current) {
+      finishedRef.current = true
+      onFinish && onFinish()
+    }
+  }, [finished, onFinish])
+
+  // mavzu sessiyasi natijasi (bu safargi foiz)
+  const mavzuFoiz = useMemo(() => {
+    if (session.type !== 'mavzu') return null
+    const uniq = [...new Set(ids)]
+    const got = uniq.reduce((a, id) => a + (session.natija?.[id] ?? 0), 0)
+    return uniq.length ? Math.round((got / uniq.length) * 100) : 0
+  }, [finished]) // eslint-disable-line react-hooks/exhaustive-deps
+
   if (finished || !word) {
     return (
       <div className="done-screen">
         <div className="ico">🎉</div>
         <h2>Mashq tugadi!</h2>
-        <p style={{ color: 'var(--text-dim)', marginBottom: 24 }}>
-          {total} ta so'z ustida ishladingiz. Zo'r!
-        </p>
+        {mavzuFoiz != null ? (
+          <>
+            <div
+              className="big-foiz"
+              style={{
+                color:
+                  mavzuFoiz >= 80
+                    ? 'var(--ok)'
+                    : mavzuFoiz >= 50
+                      ? 'var(--warn)'
+                      : 'var(--bad)',
+              }}
+            >
+              {mavzuFoiz}%
+            </div>
+            <p style={{ color: 'var(--text-dim)', marginBottom: 24 }}>
+              {total} ta so'zdan shuncha o'zlashtirdingiz. Foiz saqlandi.
+            </p>
+          </>
+        ) : (
+          <p style={{ color: 'var(--text-dim)', marginBottom: 24 }}>
+            {total} ta so'z ustida ishladingiz. Zo'r!
+          </p>
+        )}
         <button className="btn" onClick={onExit}>
           Tayyor
         </button>
