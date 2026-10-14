@@ -559,4 +559,138 @@ export const initialWords = [
     { ru: "Нельзя убивать животных.", uz: "Hayvonlarni o'ldirish mumkin emas." },
     { ru: "Охотник убивает волка.", uz: "Ovchi bo'rini o'ldiradi." },
   ] },
+
+  // --- Savollar (so'roq so'zlari) — 1 ---
+  { rus: "Кто?", uzbek: "Kim?", mavzu: "savollar1", misollar: [
+    { ru: "Кто это?", uz: "Bu kim?" },
+    { ru: "Кто там?", uz: "U yerda kim bor?" },
+  ] },
+  { rus: "Что?", uzbek: "Nima?", mavzu: "savollar1", misollar: [
+    { ru: "Что это?", uz: "Bu nima?" },
+    { ru: "Что ты хочешь?", uz: "Nima xohlaysan?" },
+  ] },
+  { rus: "Где?", uzbek: "Qaerda?", mavzu: "savollar1", misollar: [
+    { ru: "Где ты?", uz: "Qaerdasan?" },
+    { ru: "Где магазин?", uz: "Do'kon qaerda?" },
+  ] },
+  { rus: "Куда?", uzbek: "Qaerga?", mavzu: "savollar1", misollar: [
+    { ru: "Куда ты идёшь?", uz: "Qaerga ketyapsan?" },
+    { ru: "Куда положить книгу?", uz: "Kitobni qaerga qo'yay?" },
+  ] },
+  { rus: "Откуда?", uzbek: "Qaerdan?", mavzu: "savollar1", misollar: [
+    { ru: "Откуда ты?", uz: "Qaerdansan?" },
+    { ru: "Откуда этот звук?", uz: "Bu ovoz qaerdan?" },
+  ] },
+  { rus: "Когда?", uzbek: "Qachon?", mavzu: "savollar1", misollar: [
+    { ru: "Когда ты придёшь?", uz: "Qachon kelasan?" },
+    { ru: "Когда начинается урок?", uz: "Dars qachon boshlanadi?" },
+  ] },
+  { rus: "Зачем?", uzbek: "Nega?", mavzu: "savollar1", misollar: [
+    { ru: "Зачем тебе это?", uz: "Bu senga nega kerak?" },
+    { ru: "Зачем ты пришёл?", uz: "Nega kelding?" },
+  ] },
+  { rus: "Почему?", uzbek: "Nima sababdan?", mavzu: "savollar1", misollar: [
+    { ru: "Почему ты плачешь?", uz: "Nima sababdan yig'layapsan?" },
+    { ru: "Почему ты опоздал?", uz: "Nima sababdan kechikding?" },
+  ] },
+  { rus: "Для чего?", uzbek: "Nima uchun?", mavzu: "savollar1", misollar: [
+    { ru: "Для чего это нужно?", uz: "Bu nima uchun kerak?" },
+    { ru: "Для чего ты учишься?", uz: "Nima uchun o'qiyapsan?" },
+  ] },
+  { rus: "Как?", uzbek: "Qanday?", mavzu: "savollar1", misollar: [
+    { ru: "Как дела?", uz: "Ishlar qanday?" },
+    { ru: "Как это сделать?", uz: "Buni qanday qilish kerak?" },
+  ] },
+
+  // --- Savollar (so'roq so'zlari) — 2 ---
+  { rus: "Какой?", uzbek: "Qanaqa?", mavzu: "savollar2", misollar: [
+    { ru: "Какой это цвет?", uz: "Bu qanaqa rang?" },
+    { ru: "Какой фильм тебе нравится?", uz: "Senga qanaqa film yoqadi?" },
+  ] },
+  { rus: "Который?", uzbek: "Qaysi?", mavzu: "savollar2", misollar: [
+    { ru: "Который из них твой?", uz: "Qaysi biri seniki?" },
+    { ru: "Который сейчас час?", uz: "Hozir soat nechchi?" },
+  ] },
+  { rus: "Кому?", uzbek: "Kimga?", mavzu: "savollar2", misollar: [
+    { ru: "Кому ты звонишь?", uz: "Kimga qo'ng'iroq qilyapsan?" },
+    { ru: "Кому это нужно?", uz: "Bu kimga kerak?" },
+  ] },
+  { rus: "О ком?", uzbek: "Kim haqida?", mavzu: "savollar2", misollar: [
+    { ru: "О ком ты думаешь?", uz: "Kim haqida o'ylayapsan?" },
+    { ru: "О ком эта книга?", uz: "Bu kitob kim haqida?" },
+  ] },
+  { rus: "О чём?", uzbek: "Nima haqida?", mavzu: "savollar2", misollar: [
+    { ru: "О чём ты думаешь?", uz: "Nima haqida o'ylayapsan?" },
+    { ru: "О чём этот фильм?", uz: "Bu film nima haqida?" },
+  ] },
+  { rus: "С кем?", uzbek: "Kim bilan?", mavzu: "savollar2", misollar: [
+    { ru: "С кем ты идёшь?", uz: "Kim bilan ketyapsan?" },
+    { ru: "С кем ты говоришь?", uz: "Kim bilan gaplashyapsan?" },
+  ] },
+  { rus: "Сколько? (исчисл.)", uzbek: "Nechta?", mavzu: "savollar2", misollar: [
+    { ru: "Сколько у тебя книг?", uz: "Sening nechta kitobing bor?" },
+    { ru: "Сколько человек пришло?", uz: "Nechta odam keldi?" },
+  ] },
+  { rus: "Сколько? (неисчисл.)", uzbek: "Qancha?", mavzu: "savollar2", misollar: [
+    { ru: "Сколько это стоит?", uz: "Bu qancha turadi?" },
+    { ru: "Сколько воды нужно?", uz: "Qancha suv kerak?" },
+  ] },
+  { rus: "Чей?", uzbek: "Kimniki?", mavzu: "savollar2", misollar: [
+    { ru: "Чья это книга?", uz: "Bu kitob kimniki?" },
+    { ru: "Чей это дом?", uz: "Bu uy kimniki?" },
+  ] },
+
+  // --- Asosiy ko'makchilar (predloglar) ---
+  { rus: "с … (с кем-л.)", uzbek: "… bilan", mavzu: "komakchilar", misollar: [
+    { ru: "Я иду с другом.", uz: "Men do'stim bilan ketyapman." },
+    { ru: "Он играет с братом.", uz: "U akasi bilan o'ynaydi." },
+  ] },
+  { rus: "без (~ сахара и т.п.)", uzbek: "… siz", mavzu: "komakchilar", misollar: [
+    { ru: "Я пью чай без сахара.", uz: "Men choyni shakarsiz ichaman." },
+    { ru: "Он ушёл без меня.", uz: "U mensiz ketdi." },
+  ] },
+  { rus: "в (предлог движения)", uzbek: "… ga", mavzu: "komakchilar", misollar: [
+    { ru: "Я иду в школу.", uz: "Men maktabga boraman." },
+    { ru: "Он едет в город.", uz: "U shaharga boradi." },
+  ] },
+  { rus: "о (говорить о …)", uzbek: "haqida", mavzu: "komakchilar", misollar: [
+    { ru: "Мы говорим о работе.", uz: "Biz ish haqida gaplashamiz." },
+    { ru: "Это книга о любви.", uz: "Bu sevgi haqida kitob." },
+  ] },
+  { rus: "перед (во времени)", uzbek: "avval", mavzu: "komakchilar", misollar: [
+    { ru: "Помой руки перед едой.", uz: "Ovqatdan avval qo'lingni yuv." },
+    { ru: "Приходи перед обедом.", uz: "Tushlikdan avval kel." },
+  ] },
+  { rus: "перед (в пространстве)", uzbek: "oldin", mavzu: "komakchilar", misollar: [
+    { ru: "Машина стоит перед домом.", uz: "Mashina uy oldida turadi." },
+    { ru: "Он стоит передо мной.", uz: "U mening oldimda turadi." },
+  ] },
+  { rus: "под (внизу)", uzbek: "tagida", mavzu: "komakchilar", misollar: [
+    { ru: "Кот под столом.", uz: "Mushuk stol tagida." },
+    { ru: "Мяч под кроватью.", uz: "To'p karavot tagida." },
+  ] },
+  { rus: "над (наверху)", uzbek: "ustida", mavzu: "komakchilar", misollar: [
+    { ru: "Лампа над столом.", uz: "Chiroq stol ustida." },
+    { ru: "Птица летит над домом.", uz: "Qush uy ustida uchadi." },
+  ] },
+  { rus: "на (на чём-то)", uzbek: "… ga", mavzu: "komakchilar", misollar: [
+    { ru: "Положи книгу на стол.", uz: "Kitobni stolga qo'y." },
+    { ru: "Сядь на стул.", uz: "Stulga o'tir." },
+  ] },
+  { rus: "из (откуда-то)", uzbek: "… dan", mavzu: "komakchilar", misollar: [
+    { ru: "Я иду из школы.", uz: "Men maktabdan kelyapman." },
+    { ru: "Он вышел из дома.", uz: "U uydan chiqdi." },
+  ] },
+  { rus: "из (о материале)", uzbek: "… dan", mavzu: "komakchilar", misollar: [
+    { ru: "Стол из дерева.", uz: "Stol yog'ochdan." },
+    { ru: "Кольцо из золота.", uz: "Uzuk oltindan." },
+  ] },
+  { rus: "через … (о времени)", uzbek: "… dan keyin", mavzu: "komakchilar", misollar: [
+    { ru: "Приходи через час.", uz: "Bir soatdan keyin kel." },
+    { ru: "Через неделю экзамен.", uz: "Bir haftadan keyin imtihon." },
+  ] },
+  { rus: "через (о препятствии)", uzbek: "ustidan", mavzu: "komakchilar", misollar: [
+    { ru: "Прыгни через забор.", uz: "Devor ustidan sakra." },
+    { ru: "Мост через реку.", uz: "Daryo ustidan ko'prik." },
+  ] },
 ]

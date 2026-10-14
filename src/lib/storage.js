@@ -69,6 +69,7 @@ export function loadWords() {
   // lug'atdan (rus bo'yicha) to'ldiramiz. SRS progressiga tegilmaydi.
   const misolByRus = new Map(initialWords.map((w) => [w.rus, w.misollar]))
   let changed = false
+  // 1) Mavjud so'zlarni migratsiya qilish (misollar va mavzu to'ldirish)
   words = words.map((w) => {
     let nw = w
     if (!Array.isArray(w.misollar) || w.misollar.length === 0) {
@@ -81,6 +82,16 @@ export function loadWords() {
     }
     return nw
   })
+  // 2) Boshlang'ich lug'atga qo'shilgan yangi so'zlar localStorage'da yo'q bo'lsa,
+  //    ularni qo'shamiz (mavjud so'zlar va progress buzilmaydi). Kalit — rus matni.
+  const mavjudRus = new Set(words.map((w) => w.rus))
+  let keyingiId = words.reduce((m, w) => Math.max(m, w.id || 0), 0) + 1
+  for (const iw of initialWords) {
+    if (!mavjudRus.has(iw.rus)) {
+      words.push(seedWord(iw, keyingiId++))
+      changed = true
+    }
+  }
   if (changed) safeSet(WORDS_KEY, words)
   return words
 }

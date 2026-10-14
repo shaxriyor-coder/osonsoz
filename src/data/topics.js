@@ -24,6 +24,11 @@ export const TOPICS = [
     ids: [25, 38, 39, 43, 64, 72, 113, 127, 132, 139] },
   { id: 'qaror', nom: 'Qaror va talab', emoji: '📋',
     ids: [32, 36, 52, 55, 61, 69, 91, 95, 101, 107, 136, 137] },
+  // Fe'l bo'lmagan mavzular — so'zlari initialWords ichida `mavzu` maydoni orqali
+  // belgilanadi (id'lar seed paytida beriladi, shuning uchun bu yerda ids bo'sh).
+  { id: 'savollar1', nom: 'Savollar – 1', emoji: '❓', ids: [] },
+  { id: 'savollar2', nom: 'Savollar – 2', emoji: '❓', ids: [] },
+  { id: 'komakchilar', nom: "Ko'makchilar", emoji: '🔗', ids: [] },
 ]
 
 export const BOSHQA_MAVZU = { id: 'boshqa', nom: 'Boshqa', emoji: '📂' }
