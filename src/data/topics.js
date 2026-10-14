@@ -29,6 +29,7 @@ export const TOPICS = [
   { id: 'savollar1', nom: 'Savollar – 1', emoji: '❓', ids: [] },
   { id: 'savollar2', nom: 'Savollar – 2', emoji: '❓', ids: [] },
   { id: 'komakchilar', nom: "Ko'makchilar", emoji: '🔗', ids: [] },
+  { id: 'ravishlar1', nom: 'Ravishlar – 1', emoji: '🧭', ids: [] },
 ]
 
 export const BOSHQA_MAVZU = { id: 'boshqa', nom: 'Boshqa', emoji: '📂' }

@@ -693,4 +693,150 @@ export const initialWords = [
     { ru: "Прыгни через забор.", uz: "Devor ustidan sakra." },
     { ru: "Мост через реку.", uz: "Daryo ustidan ko'prik." },
   ] },
+
+  // --- Ravishlar – 1 (joy va yo'nalish) ---
+  { rus: "здесь", uzbek: "shu erda", mavzu: "ravishlar1", misollar: [
+    { ru: "Я здесь.", uz: "Men shu erdaman." },
+    { ru: "Подожди здесь.", uz: "Shu erda kut." },
+  ] },
+  { rus: "там", uzbek: "u erda", mavzu: "ravishlar1", misollar: [
+    { ru: "Он там.", uz: "U u erda." },
+    { ru: "Магазин там.", uz: "Do'kon u erda." },
+  ] },
+  { rus: "где-то", uzbek: "qaerdadir", mavzu: "ravishlar1", misollar: [
+    { ru: "Ключи где-то здесь.", uz: "Kalitlar shu yerda qaerdadir." },
+    { ru: "Он живёт где-то рядом.", uz: "U qaerdadir yaqinda yashaydi." },
+  ] },
+  { rus: "нигде", uzbek: "hech qaerda", mavzu: "ravishlar1", misollar: [
+    { ru: "Его нигде нет.", uz: "U hech qaerda yo'q." },
+    { ru: "Я нигде не был.", uz: "Men hech qaerda bo'lmadim." },
+  ] },
+  { rus: "у … (около)", uzbek: "yonida", mavzu: "ravishlar1", misollar: [
+    { ru: "Я стою у двери.", uz: "Men eshik yonida turibman." },
+    { ru: "Он сидит у окна.", uz: "U deraza yonida o'tiradi." },
+  ] },
+  { rus: "у окна", uzbek: "deraza yonida", mavzu: "ravishlar1", misollar: [
+    { ru: "Я сижу у окна.", uz: "Men deraza yonida o'tiraman." },
+    { ru: "Стол стоит у окна.", uz: "Stol deraza yonida turadi." },
+  ] },
+  { rus: "сюда", uzbek: "bu erga", mavzu: "ravishlar1", misollar: [
+    { ru: "Иди сюда.", uz: "Bu erga kel." },
+    { ru: "Положи сюда.", uz: "Bu erga qo'y." },
+  ] },
+  { rus: "туда", uzbek: "u erga", mavzu: "ravishlar1", misollar: [
+    { ru: "Иди туда.", uz: "U erga bor." },
+    { ru: "Не ходи туда.", uz: "U erga borma." },
+  ] },
+  { rus: "отсюда", uzbek: "bu erdan", mavzu: "ravishlar1", misollar: [
+    { ru: "Уходи отсюда.", uz: "Bu erdan ket." },
+    { ru: "Отсюда далеко.", uz: "Bu erdan uzoq." },
+  ] },
+  { rus: "оттуда", uzbek: "u erdan", mavzu: "ravishlar1", misollar: [
+    { ru: "Он пришёл оттуда.", uz: "U u erdan keldi." },
+    { ru: "Возьми оттуда.", uz: "U erdan ol." },
+  ] },
+  { rus: "близко", uzbek: "yaqin", mavzu: "ravishlar1", misollar: [
+    { ru: "Школа близко.", uz: "Maktab yaqin." },
+    { ru: "Магазин близко.", uz: "Do'kon yaqin." },
+  ] },
+  { rus: "далеко", uzbek: "uzoq", mavzu: "ravishlar1", misollar: [
+    { ru: "Дом далеко.", uz: "Uy uzoq." },
+    { ru: "Он живёт далеко.", uz: "U uzoqda yashaydi." },
+  ] },
+  { rus: "около (рядом)", uzbek: "yonida", mavzu: "ravishlar1", misollar: [
+    { ru: "Банк около дома.", uz: "Bank uy yonida." },
+    { ru: "Он стоит около меня.", uz: "U mening yonimda turibdi." },
+  ] },
+  { rus: "рядом (недалеко)", uzbek: "yonma-yon", mavzu: "ravishlar1", misollar: [
+    { ru: "Мы сидим рядом.", uz: "Biz yonma-yon o'tiramiz." },
+    { ru: "Дома стоят рядом.", uz: "Uylar yonma-yon turadi." },
+  ] },
+  { rus: "недалеко (ехать, идти)", uzbek: "uzoq emas", mavzu: "ravishlar1", misollar: [
+    { ru: "Школа недалеко.", uz: "Maktab uzoq emas." },
+    { ru: "Идти недалеко.", uz: "Yurish uzoq emas." },
+  ] },
+  { rus: "левый", uzbek: "chap", mavzu: "ravishlar1", misollar: [
+    { ru: "Это левая рука.", uz: "Bu chap qo'l." },
+    { ru: "Левый глаз болит.", uz: "Chap ko'z og'riyapti." },
+  ] },
+  { rus: "слева", uzbek: "chapdan", mavzu: "ravishlar1", misollar: [
+    { ru: "Машина едет слева.", uz: "Mashina chapdan kelyapti." },
+    { ru: "Ветер дует слева.", uz: "Shamol chapdan esadi." },
+  ] },
+  { rus: "налево", uzbek: "chapga", mavzu: "ravishlar1", misollar: [
+    { ru: "Поверни налево.", uz: "Chapga bur." },
+    { ru: "Иди налево.", uz: "Chapga yur." },
+  ] },
+  { rus: "правый", uzbek: "o'ng", mavzu: "ravishlar1", misollar: [
+    { ru: "Правая рука.", uz: "O'ng qo'l." },
+    { ru: "Правый берег.", uz: "O'ng qirg'oq." },
+  ] },
+  { rus: "справа", uzbek: "o'ngda", mavzu: "ravishlar1", misollar: [
+    { ru: "Магазин справа.", uz: "Do'kon o'ngda." },
+    { ru: "Он сидит справа.", uz: "U o'ngda o'tiradi." },
+  ] },
+  { rus: "направо", uzbek: "o'ngga", mavzu: "ravishlar1", misollar: [
+    { ru: "Поверни направо.", uz: "O'ngga bur." },
+    { ru: "Иди направо.", uz: "O'ngga yur." },
+  ] },
+  { rus: "спереди", uzbek: "oldida", mavzu: "ravishlar1", misollar: [
+    { ru: "Спереди сидит водитель.", uz: "Oldida haydovchi o'tiradi." },
+    { ru: "Окно спереди.", uz: "Deraza oldida." },
+  ] },
+  { rus: "передний", uzbek: "oldingi", mavzu: "ravishlar1", misollar: [
+    { ru: "Переднее колесо.", uz: "Oldingi g'ildirak." },
+    { ru: "Передний ряд.", uz: "Oldingi qator." },
+  ] },
+  { rus: "вперёд (движение)", uzbek: "oldiga", mavzu: "ravishlar1", misollar: [
+    { ru: "Иди вперёд.", uz: "Oldinga yur." },
+    { ru: "Смотри вперёд.", uz: "Oldinga qara." },
+  ] },
+  { rus: "сзади (находиться)", uzbek: "orqada", mavzu: "ravishlar1", misollar: [
+    { ru: "Он стоит сзади.", uz: "U orqada turibdi." },
+    { ru: "Сзади есть место.", uz: "Orqada joy bor." },
+  ] },
+  { rus: "сзади (подойти)", uzbek: "orqadan", mavzu: "ravishlar1", misollar: [
+    { ru: "Он подошёл сзади.", uz: "U orqadan keldi." },
+    { ru: "Кто-то идёт сзади.", uz: "Kimdir orqadan kelyapti." },
+  ] },
+  { rus: "назад (движение)", uzbek: "orqaga", mavzu: "ravishlar1", misollar: [
+    { ru: "Иди назад.", uz: "Orqaga yur." },
+    { ru: "Шаг назад.", uz: "Bir qadam orqaga." },
+  ] },
+  { rus: "середина", uzbek: "o'rta", mavzu: "ravishlar1", misollar: [
+    { ru: "Середина дороги.", uz: "Yo'lning o'rtasi." },
+    { ru: "Самая середина.", uz: "Aynan o'rta." },
+  ] },
+  { rus: "посередине", uzbek: "o'rtada", mavzu: "ravishlar1", misollar: [
+    { ru: "Стол стоит посередине.", uz: "Stol o'rtada turadi." },
+    { ru: "Он сидит посередине.", uz: "U o'rtada o'tiradi." },
+  ] },
+  { rus: "сбоку (со стороны)", uzbek: "yonida", mavzu: "ravishlar1", misollar: [
+    { ru: "Дверь сбоку.", uz: "Eshik yonida." },
+    { ru: "Он стоит сбоку.", uz: "U yonida turibdi." },
+  ] },
+  { rus: "везде", uzbek: "har erda", mavzu: "ravishlar1", misollar: [
+    { ru: "Я искал везде.", uz: "Men har erda qidirdim." },
+    { ru: "Везде есть вода.", uz: "Har erda suv bor." },
+  ] },
+  { rus: "вокруг", uzbek: "atrofda", mavzu: "ravishlar1", misollar: [
+    { ru: "Вокруг тихо.", uz: "Atrofda jim." },
+    { ru: "Вокруг много деревьев.", uz: "Atrofda ko'p daraxt bor." },
+  ] },
+  { rus: "изнутри", uzbek: "ichida", mavzu: "ravishlar1", misollar: [
+    { ru: "Дверь закрыта изнутри.", uz: "Eshik ichidan yopilgan." },
+    { ru: "Голос слышен изнутри.", uz: "Ovoz ichidan eshitiladi." },
+  ] },
+  { rus: "куда-то", uzbek: "qaergadir", mavzu: "ravishlar1", misollar: [
+    { ru: "Он ушёл куда-то.", uz: "U qaergadir ketdi." },
+    { ru: "Я положил куда-то.", uz: "Men qaergadir qo'ydim." },
+  ] },
+  { rus: "напрямик", uzbek: "to'g'ri yo'ldan", mavzu: "ravishlar1", misollar: [
+    { ru: "Пойдём напрямик.", uz: "To'g'ri yo'ldan yuramiz." },
+    { ru: "Он пошёл напрямик.", uz: "U to'g'ri yo'ldan ketdi." },
+  ] },
+  { rus: "обратно", uzbek: "qarama-qarshi tomonga", mavzu: "ravishlar1", misollar: [
+    { ru: "Он пошёл обратно.", uz: "U orqaga qaytdi." },
+    { ru: "Верни книгу обратно.", uz: "Kitobni qaytarib ber." },
+  ] },
 ]
